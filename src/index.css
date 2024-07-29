@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: spin 17s linear infinite;
+}
+
+.parallax {
+  overflow: hidden;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.parallax .scroller {
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.parallax span {
+  display: block;
+  margin-right: 30px;
+}
+
+section {
+  z-index: 10;
+  background-color: rgb(245 245 244);
+}
+
+@layer base {
+  @keyframes fill-text {
+    to {
+      background-position-x: 0em, 0;
+    }
+  }
+}
+
+@layer components {
+  .reveal-text {
+    background-image: linear-gradient(to right,
+        #fff,
+        #fff), linear-gradient(to right,
+        rgba(255,255,255,.3),
+        rgba(255,255,255,.3));
+    background-clip: text;
+    background-position-x: -180em, 0;
+    background-repeat: no-repeat;
+    color: transparent;
+    display: inline;
+    animation: fill-text linear both;
+    animation-range: entry 50% cover 100%;
+    view-timeline: --reveal-container;
+    animation-timeline: --reveal-container;
+  }
+}
+
+@keyframes lines {
+  from {
+    width: 0;
+    opacity: 1;
+  } to {
+    width: 100%;
+    opacity: 0.1;
+  }
+}
+
+.theline {
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  z-index: 999;
+  transform: translate(-0%, -50%);
+  top: 50%;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  animation: lines 1000ms;
+}
